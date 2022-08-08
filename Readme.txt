@@ -1,6 +1,1 @@
-Thanks for downloading this template!
-
-Template Name: UpConstruction
-Template URL: https://bootstrapmade.com/upconstruction-bootstrap-construction-website-template/
-Author: BootstrapMade.com
-License: https://bootstrapmade.com/license/
+한동대학교 법학부 화해중재원 웹사이트
