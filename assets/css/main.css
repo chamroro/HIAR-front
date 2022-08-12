@@ -10,17 +10,20 @@
 # Learn more about CSS variables at https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
 --------------------------------------------------------------*/
 /* Fonts */
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css');
+
 :root {
-  --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-primary: "Roboto", sans-serif;
+  --font-default:'Pretendard-Regular';
+  --font-primary: 'Playfair Display', serif;
   --font-secondary: "Work Sans", sans-serif;
 }
 
 /* Colors */
 :root {
   --color-default: #364d59;
-  --color-primary: #feb900;
-  --color-secondary: #52565e;
+  --color-primary:#71161B;
+  --color-secondary: #FEB900;
 }
 
 /* Smooth scroll behavior */
@@ -60,8 +63,14 @@ h6 {
 # Sections & Section Header
 --------------------------------------------------------------*/
 section {
-  padding: 80px 0;
+  padding: 120px 0;
   overflow: hidden;
+}
+
+@media (max-width: 575px) {
+  section {
+    padding: 20px 0;
+  }
 }
 
 .section-bg {
@@ -121,7 +130,7 @@ section {
 
 .breadcrumbs:before {
   content: "";
-  background-color: rgba(0, 0, 0, 0.6);
+ 
   position: absolute;
   inset: 0;
 }
@@ -130,7 +139,7 @@ section {
   font-size: 56px;
   font-weight: 500;
   color: #fff;
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
 }
 
 .breadcrumbs ol {
@@ -336,7 +345,7 @@ section {
     height: 2px;
     bottom: -6px;
     left: 0;
-    background-color: var(--color-primary);
+    background-color: var(--color-secondary);
     visibility: hidden;
     width: 0px;
     transition: all 0.3s ease-in-out 0s;
@@ -1114,6 +1123,19 @@ section {
 /*--------------------------------------------------------------
 # Alt Services Section
 --------------------------------------------------------------*/
+.alt-services .mainsaup {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 137.34%;
+  color: #364D59;
+  margin: 0 auto;
+  margin-top: 90px;
+  margin-bottom: 68px;
+  text-align: center;
+}
+
 .alt-services .img-bg {
   background-size: cover;
   background-position: center center;
@@ -1121,12 +1143,15 @@ section {
 }
 
 .alt-services h3 {
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--color-secondary);
+  color: #393939;
   margin-bottom: 20px;
   padding-bottom: 20px;
   position: relative;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 137.34%;
 }
 
 .alt-services h3:after {
@@ -1138,6 +1163,17 @@ section {
   background: var(--color-primary);
   left: 0;
   bottom: 0;
+}
+
+.alt-services h4{
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 160%;
+  color: #000000;
+  margin: 0;
+  padding-left: 8px;
 }
 
 .alt-services .icon-box {
@@ -1190,16 +1226,22 @@ section {
 # About Section
 --------------------------------------------------------------*/
 .about h2 {
-  font-size: 48px;
+  padding-left: 10px;
+  font-size: 24px;
   font-weight: 700;
   font-family: var(--font-secondary);
-  margin: 30px 0;
+  margin: 15px 0;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 900;
+  line-height: 137.34%;
 }
 
 @media (min-width: 991px) {
   .about h2 {
+    font-size: 30px;
     max-width: 65%;
-    margin: 0 0 80px 0;
+    margin: 0 0 64px 0;
   }
 }
 
@@ -1216,70 +1258,80 @@ section {
 
 .about .our-story h4 {
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 10px;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 700;
+  line-height: 137.34%;
   color: #838893;
 }
 
+
 .about .our-story h3 {
-  font-size: 36px;
+  font-size: 20px;
   font-weight: 700;
   margin-bottom: 20px;
-  color: var(--color-secondary);
+  font-family: 'Pretendard';
+  line-height: 137.34%;
+  color: #393939;
+}
+
+@media (min-width: 991px) {
+  .about .our-story h3 {
+    font-size: 36px;
+  }
 }
 
 .about .our-story p:last-child {
   margin-bottom: 0;
 }
 
-.about ul {
-  list-style: none;
-  padding: 0;
-  font-size: 15px;
-}
-
-.about ul li {
-  padding: 5px 0;
-  display: flex;
-  align-items: center;
-}
-
-.about ul i {
-  font-size: 20px;
-  margin-right: 4px;
-  color: var(--color-primary);
-}
-
-.about .watch-video i {
-  font-size: 32px;
-  transition: 0.3s;
-  color: var(--color-primary);
-}
-
-.about .watch-video a {
-  font-weight: 600;
-  color: var(--color-secondary);
-  margin-left: 8px;
-  transition: 0.3s;
-}
-
-.about .watch-video:hover a {
-  color: var(--color-primary);
-}
 
 .about .about-img {
+  position: absolute;
+  top: 0;
+  right: 0;
   min-height: 600px;
   background-size: cover;
   background-position: center;
 }
 
-@media (min-width: 992px) {
+@media (max-width: 992px) {
   .about .about-img {
-    position: absolute;
-    top: 0;
-    right: 0;
+    display: none;
   }
 }
 
+.about .about-p {
+  font-size: 12px;
+  line-height: 160%;
+  color: #000000;
+}
+
+.text-red {
+  font-weight: 700;
+  color: #71161B !important;
+}
+@media (min-width: 992px) {
+  .about .about-p {
+    font-size: 16px;
+  }
+}
+
+.diagram {
+  width:660px;
+  height: auto;
+  margin: 0px auto;
+  margin-top: 100px;
+}
+
+@media (max-width: 560px) {
+  .diagram {
+    width: 90%;
+    height: auto;
+    margin: 60px auto;
+  }
+}
 /*--------------------------------------------------------------
 # Stats Counter Section
 --------------------------------------------------------------*/
@@ -1904,7 +1956,7 @@ section {
   color: #fff;
   margin-bottom: 30px;
   padding-bottom: 30px;
-  font-size: 56px;
+  font-size: 72px;
   font-weight: 700;
   position: relative;
 }
@@ -1915,13 +1967,14 @@ section {
   display: block;
   width: 80px;
   height: 4px;
-  background: var(--color-primary);
+  background: var(--color-secondary);
   left: 0;
   right: 0;
   bottom: 0;
   margin: auto;
 }
 
+/* 768보다 작거나 같을때  */
 @media (max-width: 768px) {
   .hero .info h2 {
     font-size: 36px;
@@ -1929,8 +1982,15 @@ section {
 }
 
 .hero .info p {
+  word-break:keep-all;
   color: rgba(255, 255, 255, 0.8);
   font-size: 18px;
+}
+
+@media (max-width: 640px) {
+  .hero .info p {
+    font-size: 12px;
+  }
 }
 
 .hero .info .btn-get-started {
@@ -1955,6 +2015,7 @@ section {
   justify-content: start;
 }
 
+
 @media (min-width: 640px) {
   .hero .carousel-control-prev {
     padding-left: 15px;
@@ -1965,6 +2026,7 @@ section {
   justify-content: end;
 }
 
+/* 640보다 작거나 같을 때 */
 @media (min-width: 640px) {
   .hero .carousel-control-next {
     padding-right: 15px;
@@ -2580,7 +2642,7 @@ section {
 --------------------------------------------------------------*/
 .footer {
   color: #fff;
-  background: url("../img/footer-bg.jpg") top center no-repeat;
+  background: url("../img/footer.svg") top center no-repeat;
   background-size: cover;
   font-size: 14px;
   padding: 80px 0 60px 0;
@@ -2589,7 +2651,7 @@ section {
 
 .footer:before {
   content: "";
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.5);
   position: absolute;
   inset: 0;
 }
@@ -2602,9 +2664,13 @@ section {
   font-size: 28px;
   margin: 0 0 20px 0;
   padding: 2px 0 2px 0;
-  line-height: 1;
-  font-weight: 700;
   text-transform: uppercase;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 33px;
+  color: #FFFFFF;
 }
 
 .footer .footer-content .footer-info h3 span {
@@ -2615,8 +2681,14 @@ section {
   font-size: 14px;
   line-height: 24px;
   margin-bottom: 0;
-  font-family: var(--font-primary);
+  font-family: var(--font-default);
   color: #fff;
+font-weight: 700;
+/* identical to box height */
+
+
+color: #FFFFFF;
+
 }
 
 .footer .footer-content .social-links a {
@@ -2687,4 +2759,35 @@ section {
 
 .footer .footer-legal .credits a {
   color: var(--color-primary);
+}
+
+.scroll-downs {
+  margin: auto;
+  padding-top: 8rem;
+  width :34px;
+  height: 55px;
+}
+.mousey {
+  width: 3px;
+  padding: 10px 15px;
+  height: 35px;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  opacity: 0.75;
+  box-sizing: content-box;
+}
+.scroller {
+  width: 3px;
+  height: 10px;
+  border-radius: 25%;
+  background-color: #fff;
+  animation-name: scroll;
+  animation-duration: 2.2s;
+  animation-timing-function: cubic-bezier(.15,.41,.69,.94);
+  animation-iteration-count: infinite;
+}
+@keyframes scroll {
+  0% { opacity: 0; }
+  10% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(15px); opacity: 0;}
 }

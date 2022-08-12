@@ -3,6 +3,7 @@
 * URL: https://bootstrapmade.com/php-email-form/
 * Author: BootstrapMade.com
 */
+
 (function () {
   "use strict";
 
@@ -50,10 +51,12 @@
   });
 
   function php_email_form_submit(thisForm, action, formData) {
+  
     fetch(action, {
       method: 'POST',
       body: formData,
       headers: {'X-Requested-With': 'XMLHttpRequest'}
+      
     })
     .then(response => {
       if( response.ok ) {
