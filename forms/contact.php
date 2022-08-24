@@ -7,7 +7,6 @@
   */
 
   // Replace contact@example.com with your real receiving email address
-
   $receiving_email_address = 'chamsae@handong.ac.kr';
 
   if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
@@ -26,12 +25,12 @@
 
   // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
 
-  // $contact->smtp = array(
-  //   'host' => 'handong.ac.kr',
-  //   'username' => 'example',
-  //   'password' => 'pass',
-  //   'port' => '5501'
-  // );
+  $contact->smtp = array(
+    'host' => 'smtp-relay.gmail.com',
+    'username' => 'chamsae@handong.ac.kr',
+    'password' => '53sksmsckato*',
+    'port' => '587'
+  );
 
 
   $contact->add_message( $_POST['name'], 'From');
@@ -39,9 +38,4 @@
   $contact->add_message( $_POST['message'], 'Message', 10);
 
   echo $contact->send();
-  // $contact->honeypot = $_POST['name'];
-  // $contact->honeypot = $_POST['email'];
-  // $contact->honeypot = $_POST['message'];
-
-
 ?>
