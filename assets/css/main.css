@@ -15,7 +15,8 @@
 
 :root {
   --font-default:'Pretendard-Regular';
-  --font-primary: 'Playfair Display', serif;
+  --font-primary: 'Playfair Display';
+  /* , serif */
   --font-secondary: "Work Sans", sans-serif;
 }
 
@@ -56,7 +57,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-primary);
+  font-family: var(--font-default);
 }
 
 /*--------------------------------------------------------------
@@ -137,7 +138,7 @@ section {
 
 .breadcrumbs h2 {
   font-size: 56px;
-  font-weight: 500;
+  font-weight: 700;
   color: #fff;
   font-family: var(--font-primary);
 }
@@ -700,6 +701,16 @@ section {
   }
 }
 
+
+.president{
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 137.34%;
+  color: #364D59;
+  margin-bottom: 28px;
+}
 /*--------------------------------------------------------------
 # Constructions Section
 --------------------------------------------------------------*/
@@ -829,10 +840,24 @@ section {
   font-size: 48px;
 }
 
+.features .nav-link .active h4 {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 137.34%;
+  color: #364D59;
+}
+
 .features .nav-link h4 {
-  font-size: 18px;
-  font-weight: 600;
-  margin: 0;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 137.34%;
+  
+  color: rgba(54, 77, 89, 0.6);
+
 }
 
 @media (max-width: 575px) {
@@ -851,48 +876,51 @@ section {
   border-color: var(--color-primary);
 }
 
+.features .nav-link.active h4 {
+  color: #364D59;
+}
+
 .features .tab-content {
-  margin-top: 30px;
+  margin-top: 60px;
 }
 
 .features .tab-pane h3 {
+  font-family: 'Pretendard';
+  font-style: normal;
   font-weight: 700;
-  font-size: 32px;
-  position: relative;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
+  font-size: 24px;
+  line-height: 137.34%;
+
+  color: #393939;
+
+  margin-bottom: 5px;
+
 }
 
-.features .tab-pane h3:after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: var(--color-primary);
-  left: 0;
-  bottom: 0;
+.features .tab-pane h5 {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 137.34%;
+  color: #71161B;
+  margin-bottom: 40px;
 }
 
-.features .tab-pane ul {
-  list-style: none;
-  padding: 0;
-}
-
-.features .tab-pane ul li {
-  padding-top: 10px;
-}
-
-.features .tab-pane ul i {
-  font-size: 20px;
-  padding-right: 4px;
-  color: var(--color-primary);
-}
 
 .features .tab-pane p:last-child {
   margin-bottom: 0;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 160%;
+  color: #000000;
 }
 
+.symbol img {
+  width: 100%;
+}
 /*--------------------------------------------------------------
 # Our Projects Section
 --------------------------------------------------------------*/
@@ -1237,10 +1265,54 @@ section {
   line-height: 137.34%;
 }
 
+.about hr{
+  width: 36px;
+  height: 0px;
+  
+  /* primary */
+  color:#71161B;
+  border: 3px solid #71161B;
+  transform: rotate(90deg);
+  
+  /* Inside auto layout */
+  
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  opacity: 1;
+}
+
+.aboutFlex{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 32px;
+
+}
+.recAndTexts{
+  display: flex;
+  flex-direction: column;
+  gap:28px;
+}
+
+.recAndText{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
+
+}
+
+.recAndText h4{
+  margin-bottom: 0px;
+}
 @media (min-width: 991px) {
   .about h2 {
     font-size: 30px;
-    max-width: 65%;
+    /* max-width: 65%; */
     margin: 0 0 64px 0;
   }
 }
@@ -1860,9 +1932,11 @@ section {
 }
 
 .recent-blog-posts .post-item .post-title {
+  font-family: 'Pretendard';
+  font-weight: 900;
   font-size: 24px;
-  color: var(--color-secondary);
-  font-weight: 700;
+  line-height: 137.34%;
+  color: #364D59;
   transition: 0.3s;
   margin-bottom: 15px;
 }
@@ -2128,15 +2202,17 @@ section {
 }
 
 .blog .posts-list .post-content {
-  padding: 30px;
+  padding: 36px;
 }
 
 .blog .posts-list .post-title {
+  font-family: 'Pretendard';
+  font-weight: 900;
   font-size: 24px;
-  color: var(--color-secondary);
-  font-weight: 700;
+  line-height: 137.34%;
+  color: #364D59;
   transition: 0.3s;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .blog .posts-list .meta i {
@@ -2145,42 +2221,41 @@ section {
 }
 
 .blog .posts-list .meta span {
-  font-size: 15px;
-  color: #838893;
-}
-
-.blog .posts-list p {
-  margin-top: 20px;
-}
-
-.blog .posts-list hr {
-  color: #888;
-  margin-bottom: 20px;
-}
-
-.blog .posts-list .readmore {
-  display: flex;
-  align-items: center;
-  font-weight: 600;
-  line-height: 1;
-  transition: 0.3s;
-  color: #838893;
-}
-
-.blog .posts-list .readmore i {
-  line-height: 0;
-  margin-left: 6px;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 500;
   font-size: 16px;
+  line-height: 137.34%;
+  color: #C3C3C3;
+
 }
 
-.blog .posts-list .post-item:hover .post-title,
-.blog .posts-list .post-item:hover .readmore {
-  color: var(--color-primary);
+.filedate{
+  margin-top: 40px;
 }
 
-.blog .posts-list .post-item:hover .post-img img {
-  transform: scale(1.1);
+.files img{
+  margin-left: 7px;
+  margin-right: 4px;
 }
+
+.files h4{
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px !important; 
+  line-height: 137.34%;
+  color: #000000;  
+  margin: 0;
+}
+
+.writedate h5{
+  margin: 0;
+  font-size: 16px;
+  line-height: 137.34%;
+  color: #C4C4C4;
+}
+
 
 /*--------------------------------------------------------------
 # Blog Details
