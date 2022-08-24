@@ -11,7 +11,7 @@
   forms.forEach( function(e) {
     e.addEventListener('submit', function(event) {
       event.preventDefault();
-      console.log(event);
+    
       let thisForm = this;
 
       let action = thisForm.getAttribute('action');
@@ -26,7 +26,7 @@
       thisForm.querySelector('.sent-message').classList.remove('d-block');
 
       let formData = new FormData( thisForm );
-
+      console.log(formData);
       if ( recaptcha ) {
         if(typeof grecaptcha !== "undefined" ) {
           grecaptcha.ready(function() {
@@ -53,6 +53,7 @@
     fetch(action, {
       method: 'POST',
       body: formData,
+
       headers: {'X-Requested-With': 'XMLHttpRequest'}
     })
     .then(response => {
