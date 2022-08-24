@@ -44,6 +44,7 @@
           displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
         }
       } else {
+        console.log("hello!");
         php_email_form_submit(thisForm, action, formData);
       }
     });
