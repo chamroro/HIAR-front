@@ -28,7 +28,7 @@
   $contact->smtp = array(
     'host' => 'smtp-relay.gmail.com',
     'username' => 'chamsae@handong.ac.kr',
-    'password' => '53sksmsckato*',
+    'password' => '53ckato*',
     'port' => '587'
   );
 

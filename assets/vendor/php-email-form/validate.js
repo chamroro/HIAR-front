@@ -71,14 +71,19 @@
     })
     .then(data => {
       thisForm.querySelector('.loading').classList.remove('d-block');
+      console.log("data");
+      console.log(data);
       if (data.trim() == 'OK') {
         thisForm.querySelector('.sent-message').classList.add('d-block');
+
         thisForm.reset(); 
       } else {
         throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
       }
     })
     .catch((error) => {
+      console.log("4");
+      console.log(thisForm, error);
       displayError(thisForm, error);
     });
   }
