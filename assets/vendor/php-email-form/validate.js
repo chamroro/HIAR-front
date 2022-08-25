@@ -11,9 +11,7 @@
   forms.forEach( function(e) {
     e.addEventListener('submit', function(event) {
       event.preventDefault();
-    
       let thisForm = this;
-
       let action = thisForm.getAttribute('action');
       let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
       
