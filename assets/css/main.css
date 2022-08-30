@@ -2271,11 +2271,20 @@ section {
 }
 
 .blog .blog-details .title {
-  font-size: 28px;
-  font-weight: 700;
+
   padding: 0;
   margin: 20px 0 0 0;
-  color: var(--color-secondary);
+
+
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 137.34%;
+  /* or 38px */
+
+
+  color: #364D59;
 }
 
 .blog .blog-details .content {
