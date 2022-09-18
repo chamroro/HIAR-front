@@ -71,13 +71,9 @@
                     <span>${postInfo.data().sub}</span>
                   </div>
                 </div>
-                <div class="filedate d-flex justify-content-between">
-                  <div class="files d-flex align-items-center ">
-                    <h4>Files</h4>
-                    <img style="width:14px;" src='assets/img/icon_file.svg'>
-                    <h4><strong>1</strong></h4>
-                  </div>
-                  <div class="writedate">
+                <div class="filedate d-flex justify-content-between flex-row-reverse">
+          
+                  <div style="order:1;" class="writedate">
                     <h5>${date}</h5>
                   </div>
                 </div>
@@ -86,7 +82,17 @@
           </div><!-- End post list item -->
         `;
         document.querySelector('.posts-list').insertAdjacentHTML('afterbegin', postTemplate);
-        
+        if(postInfo.data().pdf!=null){
+                    
+          const fileData=`
+          <div style="order:2;"class="files d-flex align-items-center ">
+            <h4>Files</h4>
+            <img style="width:14px;" src='assets/img/icon_file.svg'>
+            <h4><strong>1</strong></h4>
+          </div>
+          `
+          document.querySelector('.filedate').insertAdjacentHTML('afterbegin', fileData);
+        }
      
         const aTag = document.getElementsByClassName('goToPost')[0];
         aTag.addEventListener('click', () => {
@@ -97,56 +103,7 @@
 
   </script>
 
-   <!-- ======= Header ======= -->
-   <header id="header" class="header d-flex align-items-center">
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <img src="assets/img/logo.png">
-      </a>
-
-      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li class="dropdown active"><a href="index.html"><span>홈</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="#about">비전</a></li>
-              <li><a href="#about">설립취지</a></li>
-              <li><a href="#alt-services">주요사업</a></li>
-              <li><a href="#praise">말씀</a></li>
-              
-            </ul>
-          </li>
-
-  
-          <li class="dropdown active"><a href="about.html"><span>소개</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="about.html#about">조직구성</a></li>
-              <li><a href="about.html#features">인사말</a></li>
-              <li><a href="about.html#symbol">로고와 상징</a></li>
-            </ul>
-          </li>
-          <li class="dropdown active"><a href="blog.html"><span>게시판</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="blog.html">글 목록</a></li>
-        
-            </ul>
-          </li>
-          <li class="dropdown active"><a href="contact.html"><span>정보</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="contact.html">연락처</a></li>
-        
-            </ul>
-          </li>
-        </ul>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
-
+  <header include-html="header.html"></header>
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
@@ -161,16 +118,10 @@
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row gy-4 posts-list">
+        <div style="margin-bottom: 200px;" class="row gy-4 posts-list ">
         </div><!-- End blog posts list -->
 
-        <div class="blog-pagination">
-          <ul class="justify-content-center">
-            <li><a href="#">1</a></li>
-            <li class="active"><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-          </ul>
-        </div><!-- End blog pagination -->
+        
 
       </div>
     </section><!-- End Blog Section -->
