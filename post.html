@@ -89,7 +89,7 @@
                 <img style="width: 100%;" src=${image} alt="">
               </div>
             `
-            document.querySelector('.blog-details').insertAdjacentHTML('afterbegin',oneImage);
+            document.querySelector('.blog-details').insertAdjacentHTML('beforeend',oneImage);
           }); 
         }
         document.querySelector('.blog-details').insertAdjacentHTML('afterbegin', 
@@ -120,7 +120,7 @@
     });
 
   </script>
-  <header include-html="header.html"></header>r><!-- End Header -->
+  <header include-html="header.html"></header><!-- End Header -->
 
   <main id="main">
 
