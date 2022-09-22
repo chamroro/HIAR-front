@@ -143,6 +143,12 @@ section {
   font-family: var(--font-primary);
 }
 
+@media screen and (max-width: 768px) {
+  .breadcrumbs h2 {
+    font-size: 30px;
+  }
+}
+
 .breadcrumbs ol {
   display: flex;
   flex-wrap: wrap;
@@ -822,7 +828,7 @@ section {
 }
 
 .features .nav-link {
-  padding: 15px 0;
+  padding: 3px 0;
   transition: 0.3s;
   color: var(--color-secondary);
   border-radius: 0;
@@ -862,7 +868,7 @@ section {
 
 @media (max-width: 575px) {
   .features .nav-link h4 {
-    font-size: 16px;
+    font-size: 10px;
   }
 }
 
@@ -1155,19 +1161,25 @@ section {
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 900;
-  font-size: 32px;
+  font-size: 30px;
   line-height: 137.34%;
   color: #364D59;
   margin: 0 auto;
   margin-top: 90px;
   margin-bottom: 68px;
-  text-align: center;
+  margin-left: 10px;
 }
-
+@media (max-width: 512px) {
+  .alt-services .mainsaup {
+    font-size: 24px;
+    margin-top: 90px;
+    margin-bottom: 24px;
+  }
+}
 .alt-services .img-bg {
   background-size: cover;
   background-position: center center;
-  min-height: 400px;
+  min-height: 504px;
 }
 
 .alt-services h3 {
@@ -1202,6 +1214,27 @@ section {
   color: #000000;
   margin: 0;
   padding-left: 8px;
+}
+
+@media (max-width: 512px) {
+  .alt-services h4 {
+
+    font-size: 14px;
+  }
+
+  .alt-services p{
+    font-size: 12px;
+  }
+  .alt-services h3 {
+    font-weight: 800;
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+  }
+
+   .alt-services .textContents{
+    padding: 0 20px;
+   }
 }
 
 .alt-services .icon-box {
@@ -2845,6 +2878,11 @@ color: #FFFFFF;
   color: var(--color-primary);
 }
 
+@media (max-width: 640px) {
+  .footer .mobile{
+    display: none;
+  }
+}
 .scroll-downs {
   margin: auto;
   padding-top: 8rem;
