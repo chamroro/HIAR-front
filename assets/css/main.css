@@ -2954,4 +2954,11 @@ color: #FFFFFF;
   opacity: 1;
 }
 
+#praise_pc{display: block;}
+#praise_mo{display: none;}
+@media screen and (max-width: 912px){
+  #praise_pc{display: none;}
+  #praise_mo{display: block;}
+}
+
 
