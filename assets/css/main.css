@@ -328,11 +328,11 @@ section {
     align-items: center;
     justify-content: space-between;
     padding: 0 3px;
-    font-family: var(--font-primary);
+    /* font-family: var(--font-primary); */
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 700;
     color: rgba(255, 255, 255, 0.6);
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     white-space: nowrap;
     transition: 0.3s;
     position: relative;
@@ -1319,9 +1319,10 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
+ 
   padding: 0px;
   gap: 32px;
+  width: 100%;
 
 }
 .recAndTexts{
@@ -1351,19 +1352,19 @@ section {
 }
 
 .about .our-story {
-  padding: 40px;
+  padding: 33px;
   background-color: #f5f6f7;
 }
 
 @media (min-width: 991px) {
   .about .our-story {
-    padding-right: 35%;
+    padding-right: 28%;
   }
 }
 
 .about .our-story h4 {
   text-transform: uppercase;
-  font-size: 10px;
+  font-size: 18px;
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 700;
@@ -1396,7 +1397,8 @@ section {
   position: absolute;
   top: 0;
   right: 0;
-  min-height: 600px;
+  min-height: 500px;
+  max-width: 700px;
   background-size: cover;
   background-position: center;
 }
@@ -1409,13 +1411,14 @@ section {
 
 .about .about-p {
   font-size: 12px;
-  line-height: 160%;
-  color: #000000;
+  line-height: 160% !important;
+  
 }
 
 .text-red {
   font-weight: 700;
-  color: #71161B !important;
+  font-size: 20px !important;
+  color: #71161B;
 }
 @media (min-width: 992px) {
   .about .about-p {
@@ -2066,6 +2069,11 @@ section {
   font-size: 72px;
   font-weight: 700;
   position: relative;
+ 
+}
+
+.en{
+  font-family: 'Playfair Display' !important;
 }
 
 .hero .info h2:after {
