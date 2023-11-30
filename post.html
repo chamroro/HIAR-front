@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  
+
   <title>HIAR</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -27,7 +27,9 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -59,17 +61,17 @@
     console.log(receivedData);
     const db = firebase.firestore();
     console.log(db);
-   
+
     db.collection('posts').doc(receivedData).get().then((postInfo) => {
-        const convertDate = (date) => {
-            var d = date.toString()
-            return d.substr(4, 11);
-        }
-        console.log(postInfo.data());
-        var date = convertDate(postInfo.data().uploadDate.toDate())
-        const data = postInfo.data().id;
-        
-        const contents =
+      const convertDate = (date) => {
+        var d = date.toString()
+        return d.substr(4, 11);
+      }
+      console.log(postInfo.data());
+      var date = convertDate(postInfo.data().uploadDate.toDate())
+      const data = postInfo.data().id;
+
+      const contents =
         `
           <h2 class="title">${postInfo.data().title}</h2>
           <div class="meta-top">
@@ -80,8 +82,8 @@
           
         
         `;
-        if(postInfo.data().pdf!=null){
-          const oneImage = `
+      if (postInfo.data().pdf != null) {
+        const oneImage = `
              <div style="margin-top:5px;" class="files d-flex align-items-center ">
           
               <img style="width:16px; margin-left:0;margin-right: 8px;" src='assets/img/icon_file.svg'>
@@ -89,97 +91,105 @@
               <h4 style="color:#71161B; font-size: 14px; margin-left: 5px;" >(2MB)</h4>
             </div>
           `
-          document.querySelector('.blog-details').insertAdjacentHTML('afterbegin',oneImage);
-        }
-      
-        if(postInfo.data().images!=null){
-          postInfo.data().images.forEach(function(image) {
-            console.log(image);
-            const oneImage = `
+        document.querySelector('.blog-details').insertAdjacentHTML('afterbegin', oneImage);
+      }
+
+      if (postInfo.data().images != null) {
+        postInfo.data().images.forEach(function (image) {
+          console.log(image);
+          const oneImage = `
               <div style="margin-bottom:10px;">
                 <img style="width: 100%;" src=${image} alt="">
               </div>
             `
-            document.querySelector('.blog-details').insertAdjacentHTML('beforeend',oneImage);
-          }); 
-        }
-        document.querySelector('.blog-details').insertAdjacentHTML('afterbegin', 
+          document.querySelector('.blog-details').insertAdjacentHTML('beforeend', oneImage);
+        });
+      }
+      document.querySelector('.blog-details').insertAdjacentHTML('afterbegin',
         `
           <div class="content">
             <p>${postInfo.data().sub}</p>
           </div>
         `
-        );
-       
-        document.querySelector('.blog-details').insertAdjacentHTML('afterbegin', contents);
+      );
+
+      document.querySelector('.blog-details').insertAdjacentHTML('afterbegin', contents);
 
 
-        var storageRef = firebase.storage().ref();
-        
-        function generateDownloadLink() {
-            
-            storageRef.child(postInfo.data().pdfTitle).getDownloadURL().then(function (url) {
-                document.getElementById('linkbox').innerHTML = '<a href="' + url + '">' + url + '</a>';
-            }).catch(function (error) {
-                console.log(error);
-                document.getElementById('linkbox').innerHTML = error.code;
-            });
-        }
-        
-       
-      
+      var storageRef = firebase.storage().ref();
+
+      function generateDownloadLink() {
+
+        storageRef.child(postInfo.data().pdfTitle).getDownloadURL().then(function (url) {
+          document.getElementById('linkbox').innerHTML = '<a href="' + url + '">' + url + '</a>';
+        }).catch(function (error) {
+          console.log(error);
+          document.getElementById('linkbox').innerHTML = error.code;
+        });
+      }
+
+
+
     });
 
   </script>
-<!-- ======= Header ======= -->
-<header id="header" class="header d-flex align-items-center">
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <img src="assets/img/logo.png">
-        </a>
-        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-        <nav id="navbar" class="navbar">
+      </a>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <nav id="navbar" class="navbar">
         <ul>
-            <li class="dropdown active"><a href="index.html"><span>홈</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown active"><a href="index.html"><span>홈</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-                <li><a href="index.html#about">비전</a></li>
-                <li><a href="index.html#about">설립취지</a></li>
-                <li><a href="index.html#alt-services">주요사업</a></li>
- 
+              <li><a href="index.html#about">비전</a></li>
+              <li><a href="index.html#about">설립취지</a></li>
+              <li><a href="index.html#alt-services">주요사업</a></li>
+
             </ul>
-            </li>
-            <li class="dropdown active"><a href="about.html"><span>소개</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          </li>
+          <li class="dropdown active"><a href="about.html"><span>소개</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-                <li><a href="about.html#about">조직구성</a></li>
-                <li><a href="about.html#features">인사말</a></li>
-                <li><a href="about.html#symbol">로고와 상징</a></li>
+              <li><a href="about.html#about">조직구성</a></li>
+              <li><a href="about.html#features">인사말</a></li>
+              <li><a href="about.html#symbol">로고와 상징</a></li>
             </ul>
-            </li>
-            <li class="dropdown active"><a href="blog.html"><span>게시판</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          </li>
+          <li class="dropdown active"><a href="blog.html"><span>게시판</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-                <li><a href="blog.html">글 목록</a></li>
+              <li><a href="blog.html">글 목록</a></li>
             </ul>
-            </li>
-            <li class="dropdown active"><a href="clinic.html"><span>클리닉</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                <ul>
-                    <li><a href="clinic.html">상담 조정 신청</a></li>
-                </ul>
-            </li>
-            <li class="dropdown active"><a href="contact.html"><span>정보</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          </li>
+          <li class="dropdown active"><a href="clinic.html"><span>클리닉</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-                <li><a href="contact.html">연락처</a></li>
+              <li><a href="clinic.html">상담 조정 신청</a></li>
             </ul>
-            </li>
-            <li class="dropdown active"><a href="contact.html"><span>English</span></a>
-            </li>
+          </li>
+          <li class="dropdown active"><a href="contact.html"><span>정보</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="contact.html">연락처</a></li>
+            </ul>
+          </li>
+          <li class="dropdown active"><a href="contact.html"><span>English</span></a>
+          </li>
+          <li class="dropdown active"></li><a class="headerButton"
+            href="mailto:hisd_arbi@handong.edu, sej@handong.edu">이메일 보내기</a>
+          </li>
         </ul>
-        </nav><!-- .navbar -->
+      </nav><!-- .navbar -->
     </div>
-</header><!-- End Header -->
-<!-- End Header -->
+  </header><!-- End Header -->
+  <!-- End Header -->
 
   <main id="main">
 
@@ -195,7 +205,7 @@
     <section id="blog" class="blog">
       <div class="container blogPost" data-aos="fade-up" data-aos-delay="100">
         <article class="blog-details">
-    
+
         </article>
       </div>
     </section><!-- End Blog Details Section -->
@@ -203,7 +213,8 @@
   </main><!-- End #main -->
   <footer include-html="footer.html"></footer>
 
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <div id="preloader"></div>
 

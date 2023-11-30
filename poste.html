@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  
+
   <title>HIAR</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -27,8 +27,12 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Libre+Baskerville:wght@700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Libre+Baskerville:wght@700&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet">
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -59,17 +63,17 @@
     console.log(receivedData);
     const db = firebase.firestore();
     console.log(db);
-   
+
     db.collection('posts').doc(receivedData).get().then((postInfo) => {
-        const convertDate = (date) => {
-            var d = date.toString()
-            return d.substr(4, 11);
-        }
-        console.log(postInfo.data());
-        var date = convertDate(postInfo.data().uploadDate.toDate())
-        const data = postInfo.data().id;
-        
-        const contents =
+      const convertDate = (date) => {
+        var d = date.toString()
+        return d.substr(4, 11);
+      }
+      console.log(postInfo.data());
+      var date = convertDate(postInfo.data().uploadDate.toDate())
+      const data = postInfo.data().id;
+
+      const contents =
         `
           <h2 class="title">${postInfo.data().title}</h2>
           <div class="meta-top">
@@ -80,8 +84,8 @@
           
         
         `;
-        if(postInfo.data().pdf!=null){
-          const oneImage = `
+      if (postInfo.data().pdf != null) {
+        const oneImage = `
              <div style="margin-top:5px;" class="files d-flex align-items-center ">
           
               <img style="width:16px; margin-left:0;margin-right: 8px;" src='assets/img/icon_file.svg'>
@@ -89,97 +93,105 @@
               <h4 style="color:#71161B; font-size: 14px; margin-left: 5px;" >(2MB)</h4>
             </div>
           `
-          document.querySelector('.blog-details').insertAdjacentHTML('afterbegin',oneImage);
-        }
-      
-        if(postInfo.data().images!=null){
-          postInfo.data().images.forEach(function(image) {
-            console.log(image);
-            const oneImage = `
+        document.querySelector('.blog-details').insertAdjacentHTML('afterbegin', oneImage);
+      }
+
+      if (postInfo.data().images != null) {
+        postInfo.data().images.forEach(function (image) {
+          console.log(image);
+          const oneImage = `
               <div style="margin-bottom:10px;">
                 <img style="width: 100%;" src=${image} alt="">
               </div>
             `
-            document.querySelector('.blog-details').insertAdjacentHTML('beforeend',oneImage);
-          }); 
-        }
-        document.querySelector('.blog-details').insertAdjacentHTML('afterbegin', 
+          document.querySelector('.blog-details').insertAdjacentHTML('beforeend', oneImage);
+        });
+      }
+      document.querySelector('.blog-details').insertAdjacentHTML('afterbegin',
         `
           <div class="content">
             <p>${postInfo.data().sub}</p>
           </div>
         `
-        );
-       
-        document.querySelector('.blog-details').insertAdjacentHTML('afterbegin', contents);
+      );
+
+      document.querySelector('.blog-details').insertAdjacentHTML('afterbegin', contents);
 
 
-        var storageRef = firebase.storage().ref();
-        
-        function generateDownloadLink() {
-            
-            storageRef.child(postInfo.data().pdfTitle).getDownloadURL().then(function (url) {
-                document.getElementById('linkbox').innerHTML = '<a href="' + url + '">' + url + '</a>';
-            }).catch(function (error) {
-                console.log(error);
-                document.getElementById('linkbox').innerHTML = error.code;
-            });
-        }
-        
-       
-      
+      var storageRef = firebase.storage().ref();
+
+      function generateDownloadLink() {
+
+        storageRef.child(postInfo.data().pdfTitle).getDownloadURL().then(function (url) {
+          document.getElementById('linkbox').innerHTML = '<a href="' + url + '">' + url + '</a>';
+        }).catch(function (error) {
+          console.log(error);
+          document.getElementById('linkbox').innerHTML = error.code;
+        });
+      }
+
+
+
     });
 
   </script>
-<!-- ======= Header ======= -->
-<header id="header" class="header d-flex align-items-center">
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-        <a href="indexe.html" class="logo d-flex align-items-center">
+      <a href="indexe.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <img src="assets/img/logo.png">
-        </a>
-        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-        <nav id="navbar" class="navbar">
+      </a>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <nav id="navbar" class="navbar">
         <ul>
-            <li class="dropdown active"><a href="indexe.html"><span>Home</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown active"><a href="indexe.html"><span>Home</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-                <li><a href="indexe.html#about">Vision</a></li>
-                <li><a href="indexe.html#about">Founding Spirit</a></li>
-                <li><a href="indexe.html#alt-services">Main Programs</a></li>
- 
+              <li><a href="indexe.html#about">Vision</a></li>
+              <li><a href="indexe.html#about">Founding Spirit</a></li>
+              <li><a href="indexe.html#alt-services">Main Programs</a></li>
+
             </ul>
-            </li>
-            <li class="dropdown active"><a href="aboute.html"><span>About HIAR</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          </li>
+          <li class="dropdown active"><a href="aboute.html"><span>About HIAR</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-                <li><a href="aboute.html#about">Organizational Structure</a></li>
-                <li><a href="aboute.html#features">Welcome Message</a></li>
-                <li><a href="aboute.html#symbol">Logo and Symbol</a></li>
+              <li><a href="aboute.html#about">Organizational Structure</a></li>
+              <li><a href="aboute.html#features">Welcome Message</a></li>
+              <li><a href="aboute.html#symbol">Logo and Symbol</a></li>
             </ul>
-            </li>
-            <li class="dropdown active"><a href="bloge.html"><span>Blog</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          </li>
+          <li class="dropdown active"><a href="bloge.html"><span>Blog</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-                <li><a href="bloge.html">Posts</a></li>
+              <li><a href="bloge.html">Posts</a></li>
             </ul>
-            </li>
-            <li class="dropdown active"><a href="clinice.html"><span>Clinic</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                <ul>
-                    <li><a href="clinice.html">상담 조정 신청</a></li>
-                </ul>
-            </li>
-            <li class="dropdown active"><a href="contacte.html"><span>Information</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          </li>
+          <li class="dropdown active"><a href="clinice.html"><span>Clinic</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-                <li><a href="contacte.html">Contact Information</a></li>
+              <li><a href="clinice.html">Apply for mediation</a></li>
             </ul>
-            </li>
-             <li class="dropdown active"><a href="post.html"><span>한국어</span></a>
-            </li>
+          </li>
+          <li class="dropdown active"><a href="contacte.html"><span>Information</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="contacte.html">Contact Information</a></li>
+            </ul>
+          </li>
+          <li class="dropdown active"><a href="post.html"><span>한국어</span></a>
+          </li>
+          <li class="dropdown active"></li><a class="headerButton"
+            href="mailto:hisd_arbi@handong.edu, sej@handong.edu">Apply for mediation</a>
+          </li>
         </ul>
-        </nav><!-- .navbar -->
+      </nav><!-- .navbar -->
     </div>
-</header><!-- End Header -->
-<!-- End Header -->
+  </header><!-- End Header -->
+  <!-- End Header -->
 
   <main id="main">
 
@@ -195,7 +207,7 @@
     <section id="blog" class="blog">
       <div class="container blogPost" data-aos="fade-up" data-aos-delay="100">
         <article class="blog-details">
-    
+
         </article>
       </div>
     </section><!-- End Blog Details Section -->
@@ -203,7 +215,8 @@
   </main><!-- End #main -->
   <footer include-html="footere.html"></footer>
 
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <div id="preloader"></div>
 

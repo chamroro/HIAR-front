@@ -1,5 +1,16 @@
 {
   "dependencies": {
     "firebase": "^9.9.3"
-  }
+  },
+  "name": "hiar",
+  "description": "한동대학교 법학부 화해중재원 웹사이트",
+  "version": "1.0.0",
+  "main": "config.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.html"
+  },
+  "author": "",
+  "license": "ISC"
 }

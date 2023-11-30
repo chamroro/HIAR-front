@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  
+
   <title>HIAR</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -27,8 +27,12 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Libre+Baskerville:wght@700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Libre+Baskerville:wght@700&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet">
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -58,20 +62,20 @@
     const db = firebase.firestore();
     console.log(db);
     db.collection('posts')
-    .get().then((result) => {
-      result.forEach((postInfo) => {
-        console.log(postInfo);
-       
-        const convertDate = (date) => {
+      .get().then((result) => {
+        result.forEach((postInfo) => {
+          console.log(postInfo);
+
+          const convertDate = (date) => {
             // whatever formatting you want to do can be done here
             var d = date.toString()
-            
+
             return d.substr(4, 11);
-        }
-        var date = convertDate(postInfo.data().uploadDate.toDate())
-      
-        const data = postInfo.data().id;
-        const postTemplate = `
+          }
+          var date = convertDate(postInfo.data().uploadDate.toDate())
+
+          const data = postInfo.data().id;
+          const postTemplate = `
           
         <div class="col-xl-4 col-md-6">
             <div class="post-item position-relative h-100">
@@ -92,81 +96,90 @@
             </div>
           </div><!-- End post list item -->
         `;
-        document.querySelector('.posts-list').insertAdjacentHTML('afterbegin', postTemplate);
-        if(postInfo.data().pdf!=null){
-                    
-          const fileData=`
+          document.querySelector('.posts-list').insertAdjacentHTML('afterbegin', postTemplate);
+          if (postInfo.data().pdf != null) {
+
+            const fileData = `
           <div style="order:2;"class="files d-flex align-items-center ">
             <h4>Files</h4>
             <img style="width:14px;" src='assets/img/icon_file.svg'>
             <h4><strong>1</strong></h4>
           </div>
           `
-          document.querySelector('.filedate').insertAdjacentHTML('afterbegin', fileData);
-        }
-     
-        const aTag = document.getElementsByClassName('goToPost')[0];
-        aTag.addEventListener('click', () => {
-          location.href = `poste.html?${data}`;
-        },false);
+            document.querySelector('.filedate').insertAdjacentHTML('afterbegin', fileData);
+          }
+
+          const aTag = document.getElementsByClassName('goToPost')[0];
+          aTag.addEventListener('click', () => {
+            location.href = `poste.html?${data}`;
+          }, false);
+        });
       });
-    });
 
   </script>
 
-<!-- ======= Header ======= -->
-<header id="header" class="header d-flex align-items-center">
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-        <a href="indexe.html" class="logo d-flex align-items-center">
+      <a href="indexe.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <img src="assets/img/logo.png">
-        </a>
-        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-        <nav id="navbar" class="navbar">
+      </a>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <nav id="navbar" class="navbar">
         <ul>
-            <li class="dropdown active"><a href="indexe.html"><span>Home</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown active"><a href="indexe.html"><span>Home</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-                <li><a href="indexe.html#about">Vision</a></li>
-                <li><a href="indexe.html#about">Founding Spirit</a></li>
-                <li><a href="indexe.html#alt-services">Main Programs</a></li>
- 
+              <li><a href="indexe.html#about">Vision</a></li>
+              <li><a href="indexe.html#about">Founding Spirit</a></li>
+              <li><a href="indexe.html#alt-services">Main Programs</a></li>
+
             </ul>
-            </li>
-            <li class="dropdown active"><a href="aboute.html"><span>About HIAR</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          </li>
+          <li class="dropdown active"><a href="aboute.html"><span>About HIAR</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-                <li><a href="aboute.html#about">Organizational Structure</a></li>
-                <li><a href="aboute.html#features">Welcome Message</a></li>
-                <li><a href="aboute.html#symbol">Logo and Symbol</a></li>
+              <li><a href="aboute.html#about">Organizational Structure</a></li>
+              <li><a href="aboute.html#features">Welcome Message</a></li>
+              <li><a href="aboute.html#symbol">Logo and Symbol</a></li>
             </ul>
-            </li>
-            <li class="dropdown active"><a href="bloge.html"><span>Blog</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          </li>
+          <li class="dropdown active"><a href="bloge.html"><span>Blog</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-                <li><a href="bloge.html">Posts</a></li>
+              <li><a href="bloge.html">Posts</a></li>
             </ul>
-            </li>
-            <li class="dropdown active"><a href="clinice.html"><span>Clinic</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                <ul>
-                    <li><a href="clinice.html">상담 조정 신청</a></li>
-                </ul>
-            </li>
-            <li class="dropdown active"><a href="contacte.html"><span>Information</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          </li>
+          <li class="dropdown active"><a href="clinice.html"><span>Clinic</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-                <li><a href="contacte.html">Contact Information</a></li>
+              <li><a href="clinice.html">Apply for mediation</a></li>
             </ul>
-            </li>
-             <li class="dropdown active"><a href="blog.html"><span>한국어</span></a>
-            </li>
+          </li>
+          <li class="dropdown active"><a href="contacte.html"><span>Information</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="contacte.html">Contact Information</a></li>
+            </ul>
+          </li>
+          <li class="dropdown active"><a href="blog.html"><span>한국어</span></a>
+          </li>
+          <li class="dropdown active"></li><a class="headerButton"
+            href="mailto:hisd_arbi@handong.edu, sej@handong.edu">Apply for mediation</a>
+          </li>
         </ul>
-        </nav><!-- .navbar -->
+      </nav><!-- .navbar -->
     </div>
-</header><!-- End Header -->
+  </header><!-- End Header -->
 
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs en d-flex align-items-center" style="background-image: url('assets/img/breadcrumbs-bg.png');">
+    <div class="breadcrumbs en d-flex align-items-center"
+      style="background-image: url('assets/img/breadcrumbs-bg.png');">
       <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
 
         <h2 class="en">Blog</h2>
@@ -180,7 +193,7 @@
         <div style="margin-bottom: 200px;" class="row gy-4 posts-list ">
         </div><!-- End blog posts list -->
 
-        
+
 
       </div>
     </section><!-- End Blog Section -->
@@ -190,7 +203,8 @@
 
 
 
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <div id="preloader"></div>
 

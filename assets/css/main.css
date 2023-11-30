@@ -2938,7 +2938,7 @@ color: #FFFFFF;
   color: #000000;
 }
 
-.clinic .mailToButton {
+.mailToButton {
   padding: 12px 8px;
   gap: 1px;
   width: 332px;
@@ -2953,8 +2953,33 @@ color: #FFFFFF;
   margin-top: 24px;
 }
 
-.clinic hr {
+.headerButton{
+  padding: 12px 26px !important;
+  height: 40px;
+  background: #71161B;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
+  text-align: center;
+}
 
+.popupButton{
+  padding: 12px 107px !important;
+  height: 40px;
+  background: #71161B;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
+  text-align: center;
+  margin: 40px auto;
+}
+
+
+.clinic hr {
   width: 50px;
   height: 3px;
   border: 0px;
@@ -2988,5 +3013,73 @@ color: #FFFFFF;
 .map{
   width: 100%;
   height: 100%;
+}
+
+/* 팝업 스타일 */
+.custom-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 361px;
+  height: 448px;
+  border-radius: 5px;
+  border: 1px solid #626262;
+  background: rgba(0, 0, 0, 0.59);
+  z-index: 1000;
+  overflow: hidden;
+  margin: 100px 80px;
+
+}
+
+.popup-content {
+  display: flex;
+  padding: 60px 24px;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.close-popup {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.popupTitle{
+  color: var(--gray, #F5F6F7);
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.popupDesc{
+  color: #D5D5D5;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+  padding-top: 38px;
+  padding-bottom: 70px;
+}
+
+.popupDescEng{
+  color: #D5D5D5;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+  padding-top: 38px;
+  padding-bottom: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+  .custom-popup {
+    display: none;
+  }
 }
 
