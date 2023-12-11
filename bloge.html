@@ -57,8 +57,21 @@
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-  <script src="config.js"></script>
   <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDFqqXQTcWYPpOATD9HTNdjw9VBlWxSyKU",
+      authDomain: "hiar-74d1e.firebaseapp.com",
+      databaseURL:
+        "https://hiar-74d1e-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "hiar-74d1e",
+      storageBucket: "hiar-74d1e.appspot.com",
+      messagingSenderId: "404361333109",
+      appId: "1:404361333109:web:4857ac941333f45c126b3c",
+      measurementId: "G-ZFQF3RD0XZ",
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
     const db = firebase.firestore();
     console.log(db);
     db.collection('posts')
@@ -80,10 +93,10 @@
         <div class="col-xl-4 col-md-6">
             <div class="post-item position-relative h-100">
               <div class="post-content d-flex flex-column">
-                <h3 class="post-title"><a class="goToPost" style="color: #364D59;" href="poste.html?${data}">${postInfo.data().title}</a></h3>
+                <h3 class="post-title"><a class="goToPost" style="color: #364D59;" href="poste.html?${data}">${postInfo.data().title_eng}</a></h3>
                 <div class="meta d-flex align-items-center">
                   <div class="d-flex align-items-center">
-                    <span>${postInfo.data().sub}</span>
+                    <span>${postInfo.data().sub_eng}</span>
                   </div>
                 </div>
                 <div class="filedate d-flex justify-content-between flex-row-reverse">

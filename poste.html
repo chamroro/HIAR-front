@@ -75,7 +75,7 @@
 
       const contents =
         `
-          <h2 class="title">${postInfo.data().title}</h2>
+          <h2 class="title">${postInfo.data().title_eng}</h2>
           <div class="meta-top">
             <ul>
               <li class="d-flex align-items-center date"><i class="bi bi-clock"></i>${date}</li>
@@ -110,7 +110,7 @@
       document.querySelector('.blog-details').insertAdjacentHTML('afterbegin',
         `
           <div class="content">
-            <p>${postInfo.data().sub}</p>
+            <p>${postInfo.data().sub_eng}</p>
           </div>
         `
       );
