@@ -58,82 +58,70 @@
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
   <script src="config.js"></script>
-  <script>
-    const receivedData = location.href.split('?')[1];
-    console.log(receivedData);
-    const db = firebase.firestore();
-    console.log(db);
+  <script src="config.js"></script>
 
-    db.collection('posts').doc(receivedData).get().then((postInfo) => {
-      const convertDate = (date) => {
-        var d = date.toString()
-        return d.substr(4, 11);
-      }
-      console.log(postInfo.data());
-      var date = convertDate(postInfo.data().uploadDate.toDate())
-      const data = postInfo.data().id;
+  <script type="module">
+    import { db, storageRef } from './config.js';
 
-      const contents =
-        `
-          <h2 class="title">${postInfo.data().title_eng}</h2>
-          <div class="meta-top">
-            <ul>
-              <li class="d-flex align-items-center date"><i class="bi bi-clock"></i>${date}</li>
-            </ul>
-          </div><!-- End meta top -->
-          
-        
-        `;
-      if (postInfo.data().pdf != null) {
-        const oneImage = `
-             <div style="margin-top:5px;" class="files d-flex align-items-center ">
-          
-              <img style="width:16px; margin-left:0;margin-right: 8px;" src='assets/img/icon_file.svg'>
-              <a href=${postInfo.data().pdf} style="color: #6c757d; font-size: 14px;">${postInfo.data().pdfTitle}</a>
-              <h4 style="color:#71161B; font-size: 14px; margin-left: 5px;" >(2MB)</h4>
+    const urlParams = window.location.search.substring(1); // '123' 부분만 가져옴
+    const postId = urlParams ? urlParams : null;
+
+    if (postId) {
+      db.collection('posts').doc(postId).get().then((postInfo) => {
+        if (postInfo.exists) {
+          const convertDate = (date) => {
+            var d = date.toString();
+            return d.substr(4, 11);
+          };
+
+          var date = convertDate(postInfo.data().uploadDate.toDate());
+          const data = postInfo.data().id;
+
+          const contents = `
+            <h2 class="title">${postInfo.data().title}</h2>
+            <div class="meta-top">
+              <ul>
+                <li class="d-flex align-items-center date"><i class="bi bi-clock"></i>${date}</li>
+              </ul>
             </div>
-          `
-        document.querySelector('.blog-details').insertAdjacentHTML('afterbegin', oneImage);
-      }
+            <div class="content">
+              <p>${postInfo.data().sub}</p>
+            </div>
+          `;
 
-      if (postInfo.data().images != null) {
-        postInfo.data().images.forEach(function (image) {
-          console.log(image);
-          const oneImage = `
-              <div style="margin-bottom:10px;">
-                <img style="width: 100%;" src=${image} alt="">
+          document.querySelector('.blog-details').insertAdjacentHTML('afterbegin', contents);
+
+          if (postInfo.data().images) {
+            postInfo.data().images.forEach(function (image) {
+              const oneImage = `
+                <div style="margin-bottom:10px;">
+                  <img style="width: 100%;" src=${image} alt="">
+                </div>
+              `;
+              document.querySelector('.blog-details').insertAdjacentHTML('beforeend', oneImage);
+            });
+          }
+
+          if (postInfo.data().pdf) {
+            const fileData = `
+              <div class="files d-flex align-items-center ">
+                <img style="width:16px; margin-left:0;margin-right: 8px;" src='assets/img/icon_file.svg'>
+                <a href="${postInfo.data().pdf}" style="color: #6c757d; font-size: 14px;">${postInfo.data().pdfTitle}</a>
               </div>
-            `
-          document.querySelector('.blog-details').insertAdjacentHTML('beforeend', oneImage);
-        });
-      }
-      document.querySelector('.blog-details').insertAdjacentHTML('afterbegin',
-        `
-          <div class="content">
-            <p>${postInfo.data().sub_eng}</p>
-          </div>
-        `
-      );
+            `;
+            document.querySelector('.blog-details').insertAdjacentHTML('beforeend', fileData);
+          }
 
-      document.querySelector('.blog-details').insertAdjacentHTML('afterbegin', contents);
-
-
-      var storageRef = firebase.storage().ref();
-
-      function generateDownloadLink() {
-
-        storageRef.child(postInfo.data().pdfTitle).getDownloadURL().then(function (url) {
-          document.getElementById('linkbox').innerHTML = '<a href="' + url + '">' + url + '</a>';
-        }).catch(function (error) {
-          console.log(error);
-          document.getElementById('linkbox').innerHTML = error.code;
-        });
-      }
-
-
-
-    });
-
+        } else {
+          document.querySelector('.blog-details').innerHTML = `<p>포스트를 찾을 수 없습니다.</p>`;
+        }
+      }).catch((error) => {
+        console.error("Error getting document:", error);
+        document.querySelector('.blog-details').innerHTML = `<p>오류가 발생했습니다.</p>`;
+      });
+    } else {
+      document.querySelector('.blog-details').innerHTML = `<p>잘못된 포스트 ID입니다.</p>`;
+    }
   </script>
   <!-- ======= Header ======= -->
   <header id="header" class="header d-flex align-items-center">
@@ -227,7 +215,7 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>

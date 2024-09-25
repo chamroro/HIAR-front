@@ -57,78 +57,47 @@
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyDFqqXQTcWYPpOATD9HTNdjw9VBlWxSyKU",
-      authDomain: "hiar-74d1e.firebaseapp.com",
-      databaseURL:
-        "https://hiar-74d1e-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "hiar-74d1e",
-      storageBucket: "hiar-74d1e.appspot.com",
-      messagingSenderId: "404361333109",
-      appId: "1:404361333109:web:4857ac941333f45c126b3c",
-      measurementId: "G-ZFQF3RD0XZ",
-    };
+  <script type="module">
+    import { db } from './config.js';
 
-    firebase.initializeApp(firebaseConfig);
-
-    const db = firebase.firestore();
-    console.log(db);
     db.collection('posts')
-      .get().then((result) => {
+      .get()
+      .then((result) => {
         result.forEach((postInfo) => {
-          console.log(postInfo);
-
           const convertDate = (date) => {
-            // whatever formatting you want to do can be done here
-            var d = date.toString()
-
+            var d = date.toString();
             return d.substr(4, 11);
-          }
-          var date = convertDate(postInfo.data().uploadDate.toDate())
+          };
+          var date = convertDate(postInfo.data().uploadDate.toDate());
 
           const data = postInfo.data().id;
           const postTemplate = `
-          
-        <div class="col-xl-4 col-md-6">
-            <div class="post-item position-relative h-100">
-              <div class="post-content d-flex flex-column">
-                <h3 class="post-title"><a class="goToPost" style="color: #364D59;" href="poste.html?${data}">${postInfo.data().title_eng}</a></h3>
-                <div class="meta d-flex align-items-center">
-                  <div class="d-flex align-items-center">
-                    <span>${postInfo.data().sub_eng}</span>
+            <div class="col-xl-4 col-md-6">
+              <div class="post-item position-relative h-100">
+                <div class="post-content d-flex flex-column">
+                  <h3 class="post-title"><a class="goToPost overflow" style="color: #364D59;" href="poste.html?${data}">${postInfo.data().title}</a></h3>
+                  <div class="meta d-flex align-items-center">
+                    <div class="d-flex align-items-center overflow">
+                      <span>${postInfo.data().sub}</span>
+                    </div>
                   </div>
-                </div>
-                <div class="filedate d-flex justify-content-between flex-row-reverse">
-          
-                  <div style="order:1;" class="writedate">
-                    <h5>${date}</h5>
+                  <div class="filedate d-flex justify-content-between flex-row-reverse">
+                    <div style="order:1;" class="writedate">
+                      <h5>${date}</h5>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div><!-- End post list item -->
-        `;
+          `;
           document.querySelector('.posts-list').insertAdjacentHTML('afterbegin', postTemplate);
-          if (postInfo.data().pdf != null) {
 
-            const fileData = `
-          <div style="order:2;"class="files d-flex align-items-center ">
-            <h4>Files</h4>
-            <img style="width:14px;" src='assets/img/icon_file.svg'>
-            <h4><strong>1</strong></h4>
-          </div>
-          `
-            document.querySelector('.filedate').insertAdjacentHTML('afterbegin', fileData);
-          }
-
-          const aTag = document.getElementsByClassName('goToPost')[0];
+          const aTag = document.querySelector(`a[href="poste.html?${data}"]`);
           aTag.addEventListener('click', () => {
             location.href = `poste.html?${data}`;
           }, false);
         });
       });
-
   </script>
 
   <!-- ======= Header ======= -->
@@ -228,7 +197,7 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
