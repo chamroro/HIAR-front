@@ -10,3 +10,5 @@ tmp/
 .loadpath
 .recommenders
 
+.node_modules/
+.
